@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 class Bank extends Model
-{
+{   
     protected $fillable = [
-    	'bank',
-    	'number_card',
+        'bank',
+        'number_card',
+        'user_id',
     ];
     
     /**
@@ -28,6 +29,6 @@ class Bank extends Model
     
     public function pay()
     {
-        return $this->hasOne(Payment::class);
+        return $this->belongsTo(Payment::class);
     }
 }
