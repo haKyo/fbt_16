@@ -14,12 +14,12 @@ class AddColUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->date('date_of_birth');
-            $table->string('male');
-            $table->string('address');
-            $table->string('phone');
-            $table->string('id_number');
-            $table->string('role');
+            $table->date('date_of_birth')->nullable();
+            $table->boolean('male')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('id_number')->nullable();
+            $table->boolean('role')->nullable();
         });
     }
 

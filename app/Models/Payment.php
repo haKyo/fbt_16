@@ -38,6 +38,6 @@ class Payment extends Model
     
     public function bank()
     {
-        return $this->hasOne(UserBank::class);
+        return $this->hasOne(Bank::class);
     }
 }
