@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             ListUserBookingTableSeeder::class,
             BankTableSeeder::class,
             PaymentTableSeeder::class,
+            RatingTableSeeder::class,
             ReviewTableSeeder::class,
             LikeTableSeeder::class,
             CommentTableSeeder::class,
