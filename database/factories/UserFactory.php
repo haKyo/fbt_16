@@ -17,13 +17,13 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'password' => 'secret',
         'remember_token' => str_random(10),
         'date_of_birth' => $faker->date,
         'address' => $faker->address,
         'phone' => $faker->phoneNumber,
         'id_number' => $faker->numberBetween(1, 10),
-        'role' => false,
+        'is_admin' => false,
         'firstname' => $faker->firstNameMale,
         'lastname' => $faker->lastName,
         'male' => false,

@@ -1,67 +1,42 @@
-@extends('layouts.app')
+@extends('light-bootstrap-dashboard::layouts.auth')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('messages.reset_password') }}</div>
-
-                <div class="panel-body">
-                    {{ Form::open(['route' => 'password.request', 'method' => 'POST', 'class' => 'form-horizontal']) }}
-
-                        {{ Form::token() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            {{ Form::label('email', trans('messages.email'), ['class' => 'col-md-4 control-label']) }}
-
-                            <div class="col-md-6">
-                                {{ Form::email('email', $email or old('email'), ['class' => 'form-control', 'required', 'autofocus']) }}
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="auth-card card">
+            <div class="header">
+                <h4 class="title">{{ trans('messages.reset_password') }}</h4>
+            </div>
+            <div class="content">
+                {{ Form::open(['route' => 'password.request', 'method' => 'POST']) }}
+                    {{ csrf_field() }}
+                    {{ Form::token() }}
+                    <fieldset>
+                        <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
+                            {{ Form::label('email', trans('messages.email')) }}
+                            {{ Form::email('email', $email or old('email'), ['class' => 'form-control', 'required', 'autofocus']) }}
+                            @if ($errors->has('email'))
+                                <span class="help-block">{{ $errors->first('email') }}</span>
+                            @endif
                         </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            {{ Form::label('password', trans('messages.password'), ['class' => 'col-md-4 control-label']) }}
-
-                            <div class="col-md-6">
-                                {{ Form::password('password', ['class' => 'form-control', 'required']) }}
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="form-group {{ $errors->has('password') ? 'has-error' : '' }}">
+                            {{ Form::label('password', trans('messages.password')) }}
+                            {{ Form::password('password', ['class' => 'form-control', 'required']) }}
+                            @if ($errors->has('password'))
+                                <span class="help-block">{{ $errors->first('password') }}</span>
+                            @endif
                         </div>
-
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                             {{ Form::label('password', trans('messages.comfirm_password'), ['class' => 'col-md-4 control-label']) }}
-                            <div class="col-md-6">
-                                {{ Form::password('password_confirmation', ['class' => 'form-control', 'required']) }}
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="form-group {{ $errors->has('password_confirmation') ? 'has-error' : '' }}">
+                            {{ Form::label('password', trans('messages.comfirm_password')) }}
+                            {{ Form::password('password_confirmation', ['class' => 'form-control', 'required']) }}
+                            @if ($errors->has('password_confirmation'))
+                                <span class="help-block">{{ $errors->first('password_confirmation') }}</span>
+                            @endif
                         </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ Form::submit(trans('messages.reset_password'), ['class' => 'btn btn-primary']) }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                        <!-- Change this to a button or input when using this as a form -->
+                        {{ Form::submit(trans('messages.reset_password'), ['class' => 'btn btn-lg btn-success btn-block']) }}
+                    </fieldset>
+                {{ Form::close() }}
             </div>
         </div>
     </div>

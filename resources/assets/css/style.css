@@ -1,0 +1,11 @@
+/**
+ * style.css
+ */
+
+.navbar .container .navbar-brand{
+	font-family: fa5-proxima-nova,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.card_broad{
+	padding-left: 20px;
+}
