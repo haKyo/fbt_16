@@ -23,7 +23,7 @@ class User extends Authenticatable
         'address',
         'phone',
         'id_number',
-        'role',
+        'is_admin',
     ];
 
     /**
@@ -105,4 +105,25 @@ class User extends Authenticatable
     {
         return $this->hasOne(Like::class);
     }
+
+    /**
+     * [isAdmin description]
+     * @return boolean [description]
+     */
+    
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
+
+    /**
+     * [setPasswordAttribute description]
+     * @param [type] $value [description]
+     */
+    
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
 }
