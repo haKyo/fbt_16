@@ -14,8 +14,8 @@
 </head>
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light    fixed-top" id="mainNav">
-        <a class="navbar-brand" href="{{ route('admin') }}">Booking Tour</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
+        <a class="navbar-brand" href="{{ route('admin') }}">@lang('messages.title_html')</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="">
-                    <a class="nav-link" href="charts.html">
+                    <a class="nav-link" href="{{ route('tour.index') }}">
                         <i class="fa fa-fw fa-area-chart"></i>
                         <span class="nav-link-text">@lang('messages.nav_tour')</span>
                     </a>

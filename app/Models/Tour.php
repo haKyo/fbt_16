@@ -15,9 +15,10 @@ class Tour extends Model
         'description',
         'images',
         'number_user',
-        'start_date ',
+        'start_date',
         'end_date',
         'price',
+        'category_id',
     ];
 
     /**

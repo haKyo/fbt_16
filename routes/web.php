@@ -24,5 +24,6 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 	    return view('admin.home');
 	})->name('admin');
 	Route::resource('user', 'UserController');
+	Route::resource('tour', 'TourController');
 });
 

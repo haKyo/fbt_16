@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{-- @include() --}}
+@include('common.errors')
 
 	<h2><i class="fa fa-pencil"></i> {{ trans('messages.edituser') }}</h2>
 	@if (count($user))
