@@ -29,6 +29,7 @@
         "chartist": "^0.11.0",
         "flatui-radiocheck": "^0.1.2",
         "font-awesome": "^4.7.0",
+        "jquery-datepicker": "^1.11.5",
         "optipng-bin": "^4.0.0",
         "pe7-icon": "^1.0.4",
         "pixeden-stroke-7-icon": "^1.2.3",

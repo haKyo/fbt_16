@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\EditUserRequest;
+use App\Http\Requests\CreateUserRequest;
 use Illuminate\Http\Request;
 use Exception;
 use Session;
-use Hash;
-use DB;
 
 class UserController extends Controller
 {
@@ -22,6 +21,44 @@ class UserController extends Controller
         $users = User::paginate(config('setting.paginate'));
 
         return view('admin.users.index', compact('users'));
+    }
+
+    /**
+     * [create description]
+     * @param  User   $user [description]
+     * @return [type]       [description]
+     */
+    
+    public function create()
+    {
+        return view('admin.users.create');
+    }
+
+    /**
+     * [store description]
+     * @return [type] [description]
+     */
+    
+    public function store(CreateUserRequest $request)
+    {
+        try {
+            $input = $request->only([
+                'name',
+                'email',
+                'password',
+                'phone',
+                'address',
+                'is_admin',
+            ]);
+
+            User::create($input);
+            
+            Session::flash('success', trans('messages.addsuccess'));         
+        } catch (Exception $e) {
+            Session::flash('messages', trans('messages.notsuccess'));
+        }
+
+        return redirect()->route('user.index');
     }
 
     /**
@@ -48,9 +85,10 @@ class UserController extends Controller
             $data = $request->only(['name', 'email']);
             $request->has('password') ? $user->password = $request->input('password') : $request->input('password');
             $user->update($data);
+            
             Session::flash('success', trans('messages.editsuccess'));         
         } catch (Exception $e) {
-            Session::flash('messages', trans('messages.erroredit'));
+            Session::flash('messages', trans('messages.notsuccess'));
         }
         
         return redirect()->route('user.index');
