@@ -61,9 +61,9 @@ class User extends Authenticatable
      * @return [type] [description]
      */
     
-    public function reviews()
+    public function users()
     {
-        return $this->hasMany(Review::class);
+        return $this->belongsToMany(Review::class);
     }
 
     /**
@@ -104,6 +104,16 @@ class User extends Authenticatable
     public function like()
     {
         return $this->hasOne(Like::class);
+    }
+
+    /**
+     * [tour description]
+     * @return [type] [description]
+     */
+    
+    public function reviews()
+    {
+        return $this->belongsToMany(Tour::class);
     }
 
     /**

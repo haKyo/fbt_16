@@ -82,7 +82,7 @@
         'action' => 'Action',
         'booktour' => 'BOOK NOW',
         'detail' => 'VIEW DETAIL',
-        'usd' => 'USD',
+        'usd' => '$',
         'go' => 'Go',
         'search' => 'Search',
         'leave' => 'Leave a Comment:',

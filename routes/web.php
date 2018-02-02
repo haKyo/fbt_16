@@ -24,6 +24,8 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 });
 
 Route::get('tour/{id}', 'TourController@show');
+
+// Route::get('tour/{id}', 'ReviewController@show');
 	
 Route::group(['prefix' => 'user','middleware' => 'auth'], function () {
 	//

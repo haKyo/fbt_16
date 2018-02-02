@@ -9,3 +9,7 @@
 .card_broad{
 	padding-left: 20px;
 }
+
+.card_img{
+	min-height: 261px;
+}

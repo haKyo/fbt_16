@@ -141,7 +141,6 @@ class TourController extends Controller
             Session::flash('success', trans('messages.notsuccess'));
 
             return redirect()->back();
-        }
     }
 
 }
