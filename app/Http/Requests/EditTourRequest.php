@@ -31,7 +31,7 @@ class EditTourRequest extends FormRequest
             'start_date' => 'date|required',
             'end_date' => 'date|required',
             'price' => 'string|required',
-            'category_id' => 'numeric|required',
+            'category_id' => 'integer|required',
         ];
     }
 }

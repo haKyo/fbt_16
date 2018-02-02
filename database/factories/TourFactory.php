@@ -6,7 +6,7 @@ $factory->define(App\Models\Tour::class, function (Faker $faker) {
     return [
         'title' => $faker->title,
         'description' => $faker->realText,
-        'images' => $faker->image('public/storage/images',400, 300, null, false) ,
+        'images' => $faker->image('public/uploads',400, 300, null, false) ,
         'number_user' => $faker->randomNumber(2),
         'start_date' => $faker->date,
         'end_date' => $faker->date,

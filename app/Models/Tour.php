@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Storage;
 use Illuminate\Database\Eloquent\Model;
 
 class Tour extends Model
@@ -48,7 +49,7 @@ class Tour extends Model
     
     public function category()
     {
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Category::class);
     }
 
     /**
@@ -79,5 +80,15 @@ class Tour extends Model
     public function likeable()
     {
         return $this->morphMany(Like::class, 'likeable_id');
+    }
+
+    /**
+     * [getImgPathAttribute description]
+     * @return [type] [description]
+     */
+
+    public function getImagesAttribute($value)
+    {
+        return asset(config('setting.img_path') . '/' . $value);
     }
 }

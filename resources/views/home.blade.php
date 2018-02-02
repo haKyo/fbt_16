@@ -83,74 +83,24 @@
     <!-- Portfolio Section -->
     <h2>@lang('messages.heading')</h2>
     <div class="row">
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">@lang('messages.product')</a>
-                    </h4>
-                    <p class="card-text">@lang('messages.card_text')</p>
+        @if(count($tours))
+            @foreach($tours as $tour)
+                <div class="col-lg-4 col-sm-6 portfolio-item">
+                    <div class="card h-100">
+                        <p class="card_img"><img class="card-img-top" src="{{ $tour->images }}" alt=""></a></p>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="{{ action('TourController@show', $tour->id) }}"> {{ $tour->title }}</a>
+                            </h4>
+                            <p class="card-text">@lang('messages.depart') {{ $tour->start_date }}</p>
+                            <p class="text-danger">{{ $tour->price }} @lang('messages.usd')</p>
+                            <a href="{{ action('TourController@show', $tour->id) }}" class="btn btn-raised btn-info">@lang('messages.detail')</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">@lang('messages.product')</a>
-                    </h4>
-                    <p class="card-text">@lang('messages.card_text')</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">@lang('messages.product')</a>
-                    </h4>
-                    <p class="card-text">@lang('messages.card_text')</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">@lang('messages.product')</a>
-                    </h4>
-                    <p class="card-text">@lang('messages.card_text')</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">@lang('messages.product')</a>
-                    </h4>
-                    <p class="card-text">@lang('messages.card_text')</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-            <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                    <h4 class="card-title">
-                        <a href="#">@lang('messages.product')</a>
-                    </h4>
-                    <p class="card-text">@lang('messages.card_text')</p>
-                </div>
-            </div>
-        </div>
+            @endforeach
+        @endif
     </div>
-    <!-- /.row -->
     <!-- Features Section -->
     <div class="row">
         <div class="col-lg-6">

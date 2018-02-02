@@ -11,11 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-	return view('home');
-})->name('index');
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
@@ -23,7 +19,13 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 	Route::get('/', function() {
 	    return view('admin.home');
 	})->name('admin');
-	Route::resource('user', 'UserController');
-	Route::resource('tour', 'TourController');
+	Route::resource('user', 'Admin\UserController');
+	Route::resource('tour', 'Admin\TourController');
+});
+
+Route::get('tour/{id}', 'TourController@show');
+	
+Route::group(['prefix' => 'user','middleware' => 'auth'], function () {
+	//
 });
 

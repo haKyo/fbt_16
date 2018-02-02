@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Http\Requests\EditUserRequest;
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Exception;
 use Session;
@@ -107,7 +108,7 @@ class UserController extends Controller
 
            return redirect()->route('user.index');
         } catch (Exception $e) {
-            return back();
+            return redirect()->back();
         }
     }
 }

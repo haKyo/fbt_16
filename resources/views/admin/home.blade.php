@@ -10,10 +10,10 @@
                 <h4 class="title">{{ trans('messages.hello_admin') }} {{ Auth::user()->name }} !</h4>
             </div>
             <div class="content">
-                @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
+                @if(session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
                 @endif
                 @lang('messages.txt_login')
             </div>
