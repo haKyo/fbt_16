@@ -1,22 +1,22 @@
 @extends('layouts.master')
 
-@if(isset($tours->id))
+@if (isset($tour->id))
     <div class="container">
-        <h1 class="mt-4 mb-3">{{ $tours->title }}</h1> 
+        <h1 class="mt-4 mb-3">{{ $tour->title }}</h1> 
         <!-- Page Content -->
         <div class="row">
             <!-- Post Content Column -->
             <div class="col-lg-8">
                 <!-- Preview Image -->
-                <img class="img-fluid rounded" src="{{ $tours->images }}" alt="">
+                <img class="img-fluid rounded" src="{{ $tour->images }}" alt="">
                 <hr>
                 <!-- Date/Time -->
-                <p>@lang('messages.depart') {{ $tours->start_date }} || @lang('messages.end') {{ $tours->end_date }}</p>
+                <p>@lang('messages.depart') {{ $tour->start_date }} || @lang('messages.end') {{ $tour->end_date }}</p>
                 <hr>
                 <!-- Post Content -->
-                <p class="lead">{{ $tours->description }}</p>
+                <p class="lead">{{ $tour->description }}</p>
                 <hr>
-                <p>@lang('messages.price_detail') <span class="text-danger">{{ $tours->price }} {{ trans('messages.usd') }}</span> || @lang('messages.seatAvailability') <span class="text-warning">{{ $tours->number_user }}</span></p>
+                <p>@lang('messages.price_detail') <span class="text-danger">{{ $tour->price }} {{ trans('messages.usd') }}</span> || @lang('messages.seatAvailability') <span class="text-warning">{{ $tour->number_user }}</span></p>
                 <a href="#" class="btn btn-raised btn-lg btn-success">@lang('messages.booktour')</a>
                 <!-- Comments Form -->
                 <div class="card my-4">
@@ -32,19 +32,25 @@
                 </div>
                 <!-- Single Comment -->
                 <!-- Comment with nested comments -->
-                <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                    <div class="media-body">
-                        <h5 class="mt-0"></h5>
-                        <div class="media mt-4">
-                            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                            <div class="media-body">
-                                <h5 class="mt-0"></h5>
-                            </div>
+                @foreach($tour->reviewTours as $review)
+                    <div class="media mb-4">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">{{ $review->user->name }}</h5>
+                            <p>{{ $review->content }}</p>
+                            @foreach($review->commentReviews as $comment)
+                                <div class="media mt-4">
+                                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                                    <div class="media-body">
+                                        <h5 class="mt-0">{{ $comment->user->name }}</h5>
+                                        <p>{{ $comment->content }}</p>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
-                </div>
-                <!-- comment -->
+                    <!-- comment -->
+                @endforeach
             </div>
             <!-- Sidebar Widgets Column -->
             <div class="col-md-4">
@@ -66,7 +72,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-6">
-                                <a href="#">{{ $tours->category->name }}</a>
+                                <a href="#">{{ $tour->category->name }}</a>
                             </div>
                         </div>
                     </div>

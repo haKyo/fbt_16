@@ -8,16 +8,22 @@ class Review extends Model
 {
     protected $fillable = [
     	'content',
+        'tour_id',
+        'user_id',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     /**
      * [userReviews description]
      * @return [type] [description]
      */
     
-    public function user()
+    public function comments()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class);
     }
 
     /**
@@ -25,7 +31,7 @@ class Review extends Model
      * @return [type] [description]
      */
     
-    public function tour()
+    public function reviewTour()
     {
         return $this->belongsTo(Tour::class);
     }
@@ -35,7 +41,7 @@ class Review extends Model
      * @return [type] [description]
      */
     
-    public function comments()
+    public function commentReviews()
     {
         return $this->hasMany(Comment::class);
     }

@@ -27,9 +27,9 @@ class Tour extends Model
      * @return [type] [description]
      */
     
-    public function user()
+    public function reviews()
     {
-        return $this->belongsTo(Tour::class);
+        return $this->belongsToMany(User::class, 'reviews', 'tour_id', 'user_id')->withPivot('content');
     }
 
     /**
@@ -57,7 +57,7 @@ class Tour extends Model
      * @return [type] [description]
      */
     
-    public function reviews()
+    public function reviewTours()
     {
         return $this->hasMany(Review::class);
     }

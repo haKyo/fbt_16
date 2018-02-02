@@ -27,7 +27,8 @@ class Comment extends Model
      * [review description]
      * @return [type] [description]
      */
-    public function review()
+    
+    public function commentReview()
     {
         return $this->belongsTo(Review::class);
     }
