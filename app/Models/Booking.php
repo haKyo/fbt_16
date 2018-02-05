@@ -31,6 +31,16 @@ class Booking extends Model
     {
         return $this->belongsTo(Payment::class);
     }
+
+    /**
+     * [tours description]
+     * @return [type] [description]
+     */
+    
+    public function tour()
+    {
+        return $this->belongsTo(Tour::class);
+    }
     
     /**
      * [listBooking description]

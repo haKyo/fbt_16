@@ -26,7 +26,7 @@ class EditTourRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:1000',
-            'images' => 'image|required',
+            'images' => 'image',
             'number_user' => 'string|required',
             'start_date' => 'date|required',
             'end_date' => 'date|required',

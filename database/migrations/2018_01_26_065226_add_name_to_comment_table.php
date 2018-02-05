@@ -28,6 +28,7 @@ class AddNameToCommentTable extends Migration
     {
         Schema::table('comments', function (Blueprint $table) {
             $table->dropForeign(['tour_id']);
+            $table->dropColumn('tour_id');
         });
     }
 }

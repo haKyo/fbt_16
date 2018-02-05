@@ -13,3 +13,32 @@
 .card_img{
 	min-height: 261px;
 }
+
+.input-line{
+	width: 50px;
+}
+
+.padding{
+	margin-bottom: 20px;
+}
+.left{
+	float: left;
+	width: 50%;
+}
+.right{
+	float: left;
+	width: 50%;
+}
+
+.detail_tour{
+	padding-top: 50px;
+}
+
+.inner{
+	width: 100%;
+	overflow: hidden;
+}
+
+.card-min{
+	min-height: 83px;
+}

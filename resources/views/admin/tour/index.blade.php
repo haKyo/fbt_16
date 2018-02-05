@@ -2,7 +2,7 @@
 @section('content')
     @include('common.session')
     <a href="{{ route('tour.create') }}" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> {{ trans('messages.add_tour') }}</a>
-    <table class="table thead-dark">
+    <table class="table thead-dark table-bordered">
         <thead class="thead-dark">
             <tr>
                 <th>{{ trans('messages.stt') }}</th>
@@ -22,7 +22,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $tour->title }}</td>
                     <td width="25%">{{ $tour->description }}</td>
-                    <td><img class="img-responsive img-thumbnail" src="{{ asset('uploads/' . $tour->images) }}" alt=""></td>
+                    <td><img class="img-responsive img-thumbnail" src="{{ $tour->images }}" alt=""></td>
                     <td>{{ $tour->number_user }}</td>
                     <td>{{ $tour->start_date }}</td>
                     <td>{{ $tour->end_date }}</td>

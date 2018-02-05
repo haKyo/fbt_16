@@ -22,12 +22,12 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 	Route::resource('user', 'Admin\UserController');
 	Route::resource('tour', 'Admin\TourController');
 });
-
-Route::get('tour/{id}', 'TourController@show');
-
-// Route::get('tour/{id}', 'ReviewController@show');
 	
+Route::get('tour/{id}', 'TourController@show');
+Route::get('search/{page?}', 'TourController@search')->name('search');
+
+
 Route::group(['prefix' => 'user','middleware' => 'auth'], function () {
-	//
+	Route::resource('booking', 'BookingController');
 });
 

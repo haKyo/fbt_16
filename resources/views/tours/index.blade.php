@@ -17,7 +17,7 @@
                 <p class="lead">{{ $tour->description }}</p>
                 <hr>
                 <p>@lang('messages.price_detail') <span class="text-danger">{{ $tour->price }} {{ trans('messages.usd') }}</span> || @lang('messages.seatAvailability') <span class="text-warning">{{ $tour->number_user }}</span></p>
-                <a href="#" class="btn btn-raised btn-lg btn-success">@lang('messages.booktour')</a>
+                <a href="{{ route('booking.show', $tour->id) }}" class="btn btn-raised btn-lg btn-success">@lang('messages.booktour')</a>
                 <!-- Comments Form -->
                 <div class="card my-4">
                     <h5 class="card-header">@lang('messages.leave')</h5>
