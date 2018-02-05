@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tour;
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 
 class HomeController extends Controller
@@ -16,7 +17,8 @@ class HomeController extends Controller
     public function index()
     {
         $tours = Tour::orderBy('created_at', 'asc')->paginate(config('setting.home.paginate'));
-
-        return view('home', compact('tours'));
+        $categories = Helper::getCategories();
+        
+        return view('home', compact('tours', 'categories'));
     }
 }

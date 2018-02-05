@@ -11,14 +11,14 @@
     </ol>
     <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('../../storage/images/city.jpg')">
+        <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
             <div class="carousel-caption d-none d-md-block">
                 <h3>@lang('messages.slider')</h3>
                 <p>@lang('messages.title_slider')</p>
             </div>
         </div>
         <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('../../storage/images/city.jpg')">
+        <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
             <div class="carousel-caption d-none d-md-block">
                 <h3>@lang('messages.slider')</h3>
                 <p>@lang('messages.title_slider')</p>
@@ -42,46 +42,35 @@
     </a>
 </div>
 <div class="container">
-    <h1 class="my-4">@lang('messages.wel')</h1>
+    <h2 class="my-4">@lang('messages.search_tour')</h2>
     <!-- Marketing Icons Section -->
-    <div class="row">
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100">
-                <h4 class="card-header">@lang('messages.card_title')</h4>
-                <div class="card-body">
-                    <p class="card-text">@lang('messages.card_text')</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">@lang('messages.learn_more')</a>
-                </div>
+    <div class="inner">
+        {{ Form::open(['route' => 'search', 'method' => 'GET', 'role' => 'search']) }}
+            <div class="form-group">
+                {{ Form::label('title', trans('messages.title_tour'), ['class' => 'control-label']) }}
+                {{ Form::text('title', old('title'), ['class' => 'form-control', 'placeholder' => trans('messages.title_tour')]) }}
             </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100">
-                <h4 class="card-header">@lang('messages.card_title')</h4>
-                <div class="card-body">
-                    <p class="card-text">@lang('messages.card_text')</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">@lang('messages.learn_more')</a>
-                </div>
+            <div class="form-group">
+                {{ Form::label('category', trans('messages.type_tour'), ['class' => 'control-label']) }}
+                {{ Form::select('category_id', ['0' => 'Select...'] + $categories, old('category_id', null), ['class' => 'form-control']) }}
             </div>
-        </div>
-        <div class="col-lg-4 mb-4">
-            <div class="card h-100">
-                <h4 class="card-header">@lang('messages.card_title')</h4>
-                <div class="card-body">
-                    <p class="card-text">@lang('messages.card_text')</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary">@lang('messages.learn_more')</a>
-                </div>
+            <div class="form-group">
+                {{ Form::label('startDate', trans('messages.date_depart'), ['class' => 'control-label']) }}
+                {{ Form::text('startDate', old('startDate'), ['class' => 'form-control', 'placeholder' => trans('messages.date_depart')]) }}
             </div>
-        </div>
+            <div class="form-group">
+                {{ Form::label('price', trans('messages.price_min'), ['class' => 'control-label']) }}
+                {{ Form::select('price_min', [ '0' => '0', '1000' => '1000', '2000' => '2000', '5000' => '5000', '9000' => '9000'], null, ['class' => 'custom-select', 'placeholder' => trans('messages.price_home')]) }}
+            </div>
+            <div class="form-group">
+                {{ Form::label('price', trans('messages.price_max'), ['class' => 'control-label']) }}
+                {{ Form::select('price_max', [ '9000' => '9000', '10000' => '10000', '90000' => '90000', '100000' => '100000'], null, ['class' => 'custom-select', 'placeholder' => trans('messages.price_home')]) }}
+            </div>
+            {{ Form::submit(trans('messages.search'), ['class' => 'btn btn-outline-success my-2 my-sm-0']) }}
+        {{ Form::close() }}
+
     </div>
-    <!-- /.row -->
-    <!-- Portfolio Section -->
-    <h2>@lang('messages.heading')</h2>
+    <h2 class="my-4">@lang('messages.heading')</h2>
     <div class="row">
         @if(count($tours))
             @foreach($tours as $tour)
@@ -89,16 +78,19 @@
                     <div class="card h-100">
                         <p class="card_img"><img class="card-img-top" src="{{ $tour->images }}" alt=""></a></p>
                         <div class="card-body">
-                            <h4 class="card-title">
+                            <h4 class="card-title card-min">
                                 <a href="{{ action('TourController@show', $tour->id) }}"> {{ $tour->title }}</a>
                             </h4>
                             <p class="card-text">@lang('messages.depart') {{ $tour->start_date }}</p>
-                            <p class="text-danger">{{ $tour->price }} @lang('messages.usd')</p>
+                            <p class="text-danger bg-dange">{{ $tour->price }} @lang('messages.usd')</p>
                             <a href="{{ action('TourController@show', $tour->id) }}" class="btn btn-raised btn-info">@lang('messages.detail')</a>
                         </div>
                     </div>
                 </div>
             @endforeach
+            <div class="col-md-12">
+                {{ $tours->links() }}
+            </div>
         @endif
     </div>
     <!-- Features Section -->

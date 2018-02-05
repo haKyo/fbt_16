@@ -33,17 +33,17 @@ class Tour extends Model
     }
 
     /**
-     * [ description]
+     * [booking description]
      * @return [type] [description]
      */
     
     public function booking()
     {
-        return $this->belongsTo(Booking::class);
+        return $this->hasOne(Booking::class);
     }
 
     /**
-     * [tourCat description]
+     * [category description]
      * @return [type] [description]
      */
     
