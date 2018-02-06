@@ -8,4 +8,10 @@ return [
     	'paginate' => 6,	
     ],
     'img_path' => '/uploads',
+    'status' => 1,
+    'gender' => 1,
+    'male' => 'Male',
+    'female' => 'Female',
+
+
 ];

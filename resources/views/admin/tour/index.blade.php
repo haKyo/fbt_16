@@ -1,7 +1,9 @@
 @extends('admin.master')
 @section('content')
     @include('common.session')
-    <a href="{{ route('tour.create') }}" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> {{ trans('messages.add_tour') }}</a>
+    <div class="padding">
+        <a href="{{ route('tour.create') }}" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> {{ trans('messages.add_tour') }}</a>
+    </div>
     <table class="table thead-dark table-bordered">
         <thead class="thead-dark">
             <tr>

@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@lang('admin.title')</title>
     {{ Html::style('css/app.css') }}
+    {{ Html::style('css/style.css') }}
     {{ Html::style('css/sb-admin.min.css') }}
     @yield('css')
 </head>

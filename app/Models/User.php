@@ -135,4 +135,12 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+    
+    public function getMaleAttribute($male)
+    {   
+        $male == config('setting.gender') ? $male = config('setting.male') : $male = config('setting.female'); 
+
+        return $this->attributes['male'] = $male;
+    }
 }

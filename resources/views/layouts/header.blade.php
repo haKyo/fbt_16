@@ -12,7 +12,7 @@
                             <i class="fa fa-sign-in" aria-hidden="true"></i> @lang('messages.login')
                         </a>
                         @else
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link active" href="{{ route('profile.index') }}">
                             <i class="fa fa-user-circle" aria-hidden="true"></i> {{ Auth::user()->name }}
                         </a>
                     @endguest

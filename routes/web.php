@@ -26,8 +26,9 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
 Route::get('tour/{id}', 'TourController@show');
 Route::get('search/{page?}', 'TourController@search')->name('search');
 
-
 Route::group(['prefix' => 'user','middleware' => 'auth'], function () {
+	Route::get('booking/detail/{id}', 'BookingController@showDetail')->name('booking.detail');
 	Route::resource('booking', 'BookingController');
+	Route::resource('profile', 'UserController');
 });
 
