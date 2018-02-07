@@ -19,7 +19,7 @@ class UserController extends Controller
     
     public function index()
     {
-        $users = User::paginate(config('setting.paginate'));
+        $users = User::orderBy('created_at', 'desc')->paginate(config('setting.paginate'));
 
         return view('admin.users.index', compact('users'));
     }
@@ -104,10 +104,13 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         try {
-           $user->delete();
+            $user->delete();
+            Session::flash('success', trans('messages.delsuccess'));
 
-           return redirect()->route('user.index');
+            return redirect()->route('user.index');
         } catch (Exception $e) {
+            Session::flash('success', trans('messages.notsuccess'));
+
             return redirect()->back();
         }
     }

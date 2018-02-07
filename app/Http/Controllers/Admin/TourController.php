@@ -20,7 +20,7 @@ class TourController extends Controller
     
     public function index()
     {
-        $tours = Tour::paginate(config('settings.paginate'));
+        $tours = Tour::orderBy('created_at', 'desc')->paginate(config('settings.paginate'));
 
         return view('admin.tour.index', compact('tours'));
     }

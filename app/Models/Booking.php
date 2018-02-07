@@ -8,6 +8,8 @@ class Booking extends Model
 {
     protected $fillable = [
     	'status',
+        'user_id',
+        'tour_id',
     	'date',
     	'depart_day',
     ];
