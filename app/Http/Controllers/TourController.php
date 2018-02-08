@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Tour;
 use App\Models\Review;
 use App\Models\Category;
+use App\Models\Booking;
 use App\Models\User;
 use App\Models\Comment;
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ReviewRequest;
 
 class TourController extends Controller
 {
@@ -23,8 +25,9 @@ class TourController extends Controller
     {
         try {
             $tour = Tour::with('reviewTours.user', 'category')->findOrFail($id);
-            
-            return view('tours.index', compact('tour', 'id'));
+            $booking = Booking::where('tour_id', $id)->count();
+
+            return view('tours.index', compact('tour', 'id', 'booking'));
         } catch (Exception $e) {
             Session::flash('messages', trans('messages.notfound'));
 
@@ -66,5 +69,29 @@ class TourController extends Controller
         $searchs = $searchs->orderBy('title', 'asc')->paginate(config('setting.home.paginate'));
 
         return view('tours.search', compact('searchs', 'keyword'));
+    }
+
+
+    /**
+     * [review description]
+     * @param  ReviewRequest $request [description]
+     * @return [type]                 [description]
+     */
+    
+    public function review(ReviewRequest $request, $id)
+    {   
+        try {
+            $user = auth()->user()->id;
+            $data = $request->only(['content']);
+            $data['user_id'] = $user;
+            $data['tour_id'] = $id;
+            
+            Review::create($data);
+            Session::flash('success', trans('messages.addsuccess'));
+        } catch (Exception $e) {
+            Session::flash('messages', trans('messages.notfound'));
+        }
+        
+        return back();
     }
 }

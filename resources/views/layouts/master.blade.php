@@ -19,5 +19,6 @@
     {{ Html::script('js/manifest.js') }}
     {{ Html::script('js/vendor.js') }}
     {{ Html::script('js/app.js') }}
+    {{ Html::script('js/script.js') }}
     @yield('javascript')
 </body>
