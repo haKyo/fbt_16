@@ -51,7 +51,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text input-line"><i class="fa fa-user-secret"></i></span>
             </div>
-            {{ Form::text('id_number', $user->id_number , ['class' => 'form-control', 'placeholder' => trans('messages.id')]) }}
+            {{ Form::text('id_number', $user->id_number , ['class' => 'form-control', 'placeholder' => trans('messages.cmnd')]) }}
             @if ($errors->has('id_number'))
                 <span class="help-block">
                     <strong>{{ $errors->first('id_number') }}</strong>

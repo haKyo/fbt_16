@@ -72,15 +72,13 @@
     </div>
     <h2 class="my-4">@lang('messages.heading')</h2>
     <div class="row">
-        @if(count($tours))
+        @if (count($tours))
             @foreach($tours as $tour)
                 <div class="col-lg-4 col-sm-6 portfolio-item">
                     <div class="card h-100">
                         <p class="card_img"><img class="card-img-top" src="{{ $tour->images }}" alt=""></a></p>
                         <div class="card-body">
-                            <h4 class="card-title card-min">
-                                <a href="{{ action('TourController@show', $tour->id) }}"> {{ $tour->title }}</a>
-                            </h4>
+                            <h4 class="card-title card-min text-info"><strong>{{ $tour->title }}</strong></h4>
                             <p class="card-text">@lang('messages.depart') {{ $tour->start_date }}</p>
                             <p class="text-danger bg-dange">{{ $tour->price }} @lang('messages.usd')</p>
                             <a href="{{ action('TourController@show', $tour->id) }}" class="btn btn-raised btn-info">@lang('messages.detail')</a>
@@ -89,7 +87,7 @@
                 </div>
             @endforeach
             <div class="col-md-12">
-                {{ $tours->links() }}
+                {{ $tours->links('pagination::bootstrap-4') }} 
             </div>
         @endif
     </div>

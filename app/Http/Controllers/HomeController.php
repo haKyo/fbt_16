@@ -20,6 +20,6 @@ class HomeController extends Controller
         $tours = Tour::orderBy('created_at', 'desc')->paginate(config('setting.home.paginate'));
         $categories = Helper::getCategories();
         
-        return view('home', compact('tours', 'categories' , 'booking'));
+        return view('home', compact('tours', 'categories'));
     }
 }

@@ -16,7 +16,8 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .styles('resources/assets/css/style.css', 'public/css/style.css')
    .styles('resources/assets/css/sb-admin.min.css', 'public/css/sb-admin.min.css')
    .styles('resources/assets/css/modern-business.css', 'public/css/modern-business.css')
-   .js('resources/assets/js/sb-admin.min.js', 'public/js/sb-admin.min.js');
+   .js('resources/assets/js/sb-admin.min.js', 'public/js/sb-admin.min.js')
+   .js('resources/assets/js/script.js', 'public/js/script.js');
 
 mix.copy('resources/assets/img/sidebar-*.jpg', 'public/images');
 mix.js('resources/assets/js/auth.js', 'public/js')

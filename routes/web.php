@@ -28,6 +28,8 @@ Route::get('search/{page?}', 'TourController@search')->name('search');
 
 Route::group(['prefix' => 'user','middleware' => 'auth'], function () {
 	Route::get('booking/detail/{id}', 'BookingController@showDetail')->name('booking.detail');
+	Route::post('comments', 'CommentController@comment')->name('comments');
+	Route::post('tour/{id}', 'TourController@review')->name('tour.review');
 	Route::resource('booking', 'BookingController');
 	Route::resource('profile', 'UserController');
 });

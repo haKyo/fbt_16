@@ -16,15 +16,18 @@
                 <!-- Post Content -->
                 <p class="lead">{{ $tour->description }}</p>
                 <hr>
-                <p>@lang('messages.price_detail') <span class="text-danger">{{ $tour->price }} {{ trans('messages.usd') }}</span> || @lang('messages.seatAvailability') <span class="text-warning">{{ $tour->number_user }}</span></p>
-                <a href="{{ route('booking.show', $tour->id) }}" class="btn btn-raised btn-lg btn-success">@lang('messages.booktour')</a>
+                <p>@lang('messages.price_detail') <span class="text-danger">{{ $tour->price }} {{ trans('messages.usd') }}</span> || @lang('messages.seatAvailability') <span class="text-warning hide">{{ $tour->number_user }}</span><span class="full text-danger">@lang('messages.full')</span></p>
+                @if (count($tour->number_user) == $booking)
+                    <a href="{{ route('booking.show', $tour->id) }}" class="btn btn-raised btn-lg btn-success btn-book">@lang('messages.booktour')</a>
+                @endif
+                
                 <!-- Comments Form -->
                 <div class="card my-4">
                     <h5 class="card-header">@lang('messages.leave')</h5>
                     <div class="card-body">
-                        {{ Form::open()}}
+                        {{ Form::open(['route' => ['tour.review', 'id' => $tour->id]])}}
                             <div class="form-group">
-                                {{ Form::textarea('comment', old('comment'), ['class' => 'form-control','rows' => 3]) }}
+                                {{ Form::textarea('content', null, ['class' => 'form-control','rows' => 3]) }}
                             </div>
                             {{ Form::submit(trans('messages.btn_comment'), ['class' => 'btn btn-primary btn-sm active']) }}
                         {{ Form::close() }}
@@ -47,6 +50,16 @@
                                     </div>
                                 </div>
                             @endforeach
+                            @if (Auth::check())
+                                {{ Form::open(['route' => 'comments']) }}
+                                    {{ Form::hidden('review_id', $review->id)}}
+                                    {{ Form::hidden('tour_id', $tour->id)}} 
+                                    <div class="form-group">
+                                        {{ Form::textarea('content', null, ['class' => 'form-control','rows' => 3]) }}
+                                    </div> 
+                                    {{ Form::submit(trans('messages.btn_comment'), ['class' => 'btn btn-primary btn-sm']) }}   
+                                {{ Form::close() }}
+                            @endif
                         </div>
                     </div>
                     <!-- comment -->

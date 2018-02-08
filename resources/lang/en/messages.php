@@ -132,6 +132,7 @@
         'choose' => 'Choose...',
         'male' => 'Male',
         'famale' => 'Female',
-        'booking_success' => 'Cancel Booking Success !'
+        'booking_success' => 'Cancel Booking Success !',
+        'full' => 'Full !!!'
     ]
 ?>
